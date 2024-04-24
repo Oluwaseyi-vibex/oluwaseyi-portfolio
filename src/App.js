@@ -5,22 +5,25 @@ import Skills from "./components/skills";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Footer from "./components/footer";
-
+import { HelmetProvider } from "react-helmet-async";
 const App = () => {
+  const helmetContext = {};
   return (
-    <body className="bg-[#282C33] font-FiraCode h-[fit] overflow-hidden">
-      <Header />
+    <HelmetProvider context={helmetContext}>
+      <body className="bg-[#282C33] font-FiraCode h-[fit] overflow-hidden">
+        <Header />
 
-      <Projects />
+        <Projects />
 
-      <Skills />
+        <Skills />
 
-      <About />
+        <About />
 
-      <Contact />
+        <Contact />
 
-      <Footer />
-    </body>
+        <Footer />
+      </body>
+    </HelmetProvider>
   );
 };
 
