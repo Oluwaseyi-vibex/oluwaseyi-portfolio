@@ -161,6 +161,7 @@ const Header = () => {
     HeroPScrambled();
     move();
     drag();
+    smoothScroll();
   });
 
   const buttonsRef = useRef([]);
