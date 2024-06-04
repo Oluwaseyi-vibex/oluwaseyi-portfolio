@@ -6,7 +6,6 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Footer from "./components/footer";
 import { HelmetProvider } from "react-helmet-async";
-import "./i18n";
 const App = () => {
   const helmetContext = {};
   return (
