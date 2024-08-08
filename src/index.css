@@ -28,3 +28,30 @@ body {
   text-align: left;
   height: 100vh;
 }
+
+.scroll-section-outer {
+  overflow: hidden;
+}
+
+.scroll-section-inner {
+  height: 100vh;
+  width: 350vw;
+  display: flex;
+  gap: 5px;
+  flex-direction: row;
+  position: relative;
+}
+
+.scroll-section {
+  height: 100vh;
+  width: 130vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scroll-section h3 {
+  letter-spacing: var(--headlineMedium);
+  font-size: 12vw;
+  text-transform: uppercase;
+}

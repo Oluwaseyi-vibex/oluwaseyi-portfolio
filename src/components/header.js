@@ -113,7 +113,7 @@ const Header = () => {
   };
 
   const text = useRef();
-  const text2 = useRef();
+  // const text2 = useRef();
   const HeroPScrambled = () => {
     gsap.to(text.current, {
       duration: 4,
@@ -126,22 +126,22 @@ const Header = () => {
       },
     });
 
-    gsap.to(text2.current, {
-      duration: 1,
-      text: {
-        value: " With great power comes great electricity bill",
-        ease: "elastic",
-        newClass: "class2",
-        // delimiter: " ",
-        // padSpace: true,
-      },
-      scrollTrigger: {
-        trigger: text2.current,
-        toggleActions: "restart pause resume none",
-        // start: "top center",
-        // markers: true,
-      },
-    });
+    // gsap.to(text2.current, {
+    //   duration: 1,
+    //   text: {
+    //     value: " With great power comes great electricity bill",
+    //     ease: "elastic",
+    //     newClass: "class2",
+    //     // delimiter: " ",
+    //     // padSpace: true,
+    //   },
+    //   scrollTrigger: {
+    //     trigger: text2.current,
+    //     toggleActions: "restart pause resume none",
+    //     // start: "top center",
+    //     // markers: true,
+    //   },
+    // });
   };
 
   const smoothScroll = () => {
@@ -185,6 +185,34 @@ const Header = () => {
     };
   }, []);
 
+  const sectionRef = useRef(null);
+  const triggerRef = useRef(null);
+
+  useEffect(() => {
+    const pin = gsap.fromTo(
+      sectionRef.current,
+      {
+        translateX: 0,
+      },
+      {
+        translateX: "-300vw",
+        ease: "none",
+        duration: 1,
+        scrollTrigger: {
+          trigger: triggerRef.current,
+          start: "top top",
+          end: "2000 top",
+          scrub: 0.6,
+          pin: true,
+          yoyo: true,
+        },
+      }
+    );
+    return () => {
+      pin.kill();
+    };
+  }, []);
+
   return (
     <>
       <div ref={container} className="flex justify-between">
@@ -218,7 +246,7 @@ const Header = () => {
               </h1>
             </div>
 
-            <ul className="flex gap-[32px] align-start">
+            <ul className="hidden md:flex gap-[32px] align-start">
               <li
                 ref={(el) => (buttonsRef.current[0] = el)}
                 id="section1"
@@ -303,27 +331,32 @@ const Header = () => {
           </div>
 
           <div className="flex justify-center w-full px-full overflow-hidden items-center ">
-            <div className="flex flex-col pt-5 items-end">
-              <div className="border-solid w-fit p-[32px] border-white border-[1px] ">
-                <img
-                  className="relative py-[4px] px-[6px] bg-[#282C33] bottom-12"
-                  src={Qoute}
-                  alt="QouteIcon"
-                />
-                <p
-                  ref={text2}
-                  className="text-[24px] text-white font-medium "
-                ></p>
-                <img
-                  className="relative top-11  py-[4px] px-[6px] bg-[#282C33] left-[620px]"
-                  src={Qoute}
-                  alt="QouteIcon"
-                />
+            {/* <div className="flex flex-col pt-5 items-end">
+              <div className="border-solid w-fit p-[32px] border-white border-[1px] "> */}
+            <section className={`scroll-section-outer `}>
+              <div ref={triggerRef}>
+                <div
+                  ref={sectionRef}
+                  className="scroll-section-inner text-white border-y-4 border-white"
+                >
+                  <div className="scroll-section">
+                    <h3>I craft</h3>
+                  </div>
+                  <div className="scroll-section">
+                    <h3>responsive websites</h3>
+                  </div>
+
+                  <div className="scroll-section">
+                    <h3>where technologies</h3>
+                  </div>
+                  <div className="scroll-section">
+                    <h3>meets creativity</h3>
+                  </div>
+                </div>
               </div>
-              <div className="border-solid w-fit text-[24px] text-white p-[16px] flex justify-end  border-white border-[1px]">
-                - Dr. Who
-              </div>
-            </div>
+            </section>
+            {/* </div>
+            </div> */}
 
             <div className="w-[91px] h-[91px] border-solid border-white border-[1px] relative bottom-10 left-[340px]"></div>
           </div>
